@@ -36,8 +36,7 @@ for position in positions:
     for k, v in position.items():
         if k == 'forward':
             horizontal += int(v)
-            depth_delta = aim * int(v)
-            depth += depth_delta
+            depth += aim * int(v)
         if k == 'up':
             aim -= int(v)
         if k == 'down':
