@@ -1,6 +1,6 @@
 from rich import print
 
-with open('input', 'r') as f:
+with open("input", "r") as f:
     data = f.read().splitlines()
 
 bit01 = []
@@ -16,18 +16,69 @@ bit10 = []
 bit11 = []
 bit12 = []
 
-for line in data:
-    bit01.append(line[0])
-    bit02.append(line[1])
-    bit03.append(line[2])
-    bit04.append(line[3])
-    bit05.append(line[4])
-    bit06.append(line[5])
-    bit07.append(line[6])
-    bit08.append(line[7])
-    bit09.append(line[8])
-    bit10.append(line[9])
-    bit11.append(line[10])
-    bit12.append(line[11])
+bits = [
+    bit01,
+    bit02,
+    bit03,
+    bit04,
+    bit05,
+    bit06,
+    bit07,
+    bit08,
+    bit09,
+    bit10,
+    bit11,
+    bit12,
+]
 
-print(bit04.count('1'))
+gamma = []  # Most Common
+epsilon = []  # Least Common
+
+
+for line in data:
+    for position, bit in enumerate(line):
+        if position == 0:
+            bit01.append(bit)
+        if position == 1:
+            bit02.append(bit)
+        if position == 2:
+            bit03.append(bit)
+        if position == 3:
+            bit04.append(bit)
+        if position == 4:
+            bit05.append(bit)
+        if position == 5:
+            bit06.append(bit)
+        if position == 6:
+            bit07.append(bit)
+        if position == 7:
+            bit08.append(bit)
+        if position == 8:
+            bit09.append(bit)
+        if position == 9:
+            bit10.append(bit)
+        if position == 10:
+            bit11.append(bit)
+        if position == 11:
+            bit12.append(bit)
+
+
+for bit in bits:
+    if bit.count("1") <= 500:
+        epsilon.append("1")
+        gamma.append("0")
+    else:
+        epsilon.append("0")
+        gamma.append("1")
+
+epsilon = int("".join(epsilon), 2)
+gamma = int("".join(gamma), 2)
+power = epsilon * gamma
+
+
+o2 = []
+co2 = []
+
+
+print(f"Puzzle one: {power}")
+# print(f'Puzzle two: {life_support}')
